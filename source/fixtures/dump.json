@@ -1,0 +1,162 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Ball",
+    "category": "other",
+    "description": "Football ball",
+    "photo": ""
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Noutbook",
+    "category": "household",
+    "description": "Mac Book",
+    "photo": ""
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "TV",
+    "category": "household",
+    "description": "TV for home",
+    "photo": ""
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "Jacket",
+    "category": "clothes",
+    "description": "Adidas brand jacket",
+    "photo": ""
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$PDyMKVzr6HKU$6oNJB/XfZ1JeBjSq01gBTTcC/HqDdTd0lHa0H0mZ3HE=",
+    "last_login": "2019-11-16T10:31:54.275Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-11-16T10:12:02.419Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$E1xMn05hhbXe$Mv3a3lJKZkB9q3KSydlJnJNsP2i9aZ9qyh7utftfi+o=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-16T10:39:05.211Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$KuOKP4rZ16Nu$nq1JeTQnk5FmLmkKemaXR3GkP7yRmVKcUbDgiXA4UBA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-16T10:39:36.490Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$VHaVsUCXU1bm$nDb//jz5s7itsWXPdRmdzPawFXHq14AL5GGBHZuhbYs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-16T10:39:53.232Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 1,
+  "fields": {
+    "author": [
+      "admin"
+    ],
+    "product": 1,
+    "order_description": "The best one",
+    "rating": "1"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 2,
+  "fields": {
+    "author": [
+      "user"
+    ],
+    "product": 2,
+    "order_description": "the good one",
+    "rating": "3"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "author": [
+      "user1"
+    ],
+    "product": 4,
+    "order_description": "Very goood",
+    "rating": "4"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 4,
+  "fields": {
+    "author": [
+      "user2"
+    ],
+    "product": 1,
+    "order_description": "Basket Ball",
+    "rating": "5"
+  }
+}
+]
