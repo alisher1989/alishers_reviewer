@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Create task{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'webapp:products_view' %}">Products</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Create Task</h1>
+    <form method="POST" action="{% url 'webapp:review_update' review.pk %}">
+        {% include 'partial/form.html' with button_text="Create" %}
+    </form>
+{% endblock %}

@@ -5,33 +5,33 @@ from webapp.forms import ProductForm
 from webapp.models import Product
 
 
-class TypesView(ListView):
+class ProductsView(ListView):
     template_name = 'product/list.html'
     model = Product
     context_key = 'products'
 
 
-class ProjectView(DetailView):
+class ProductView(DetailView):
     template_name = 'product/product.html'
     context_object_name = 'product'
     model = Product
 
 
-class ProjectCreateView(CreateView):
+class ProductCreateView(CreateView):
     model = Product
     template_name = 'product/create.html'
     form_class = ProductForm
 
 
 
-class ProjectUpdateView(UpdateView):
+class ProductUpdateView(UpdateView):
     model = Product
     template_name = 'product/update.html'
     form_class = ProductForm
     context_object_name = 'product'
 
 
-class ProjectDeleteView(DeleteView):
+class ProductDeleteView(DeleteView):
     model = Product
     pk_kwargs_url = 'pk'
     template_name = 'product/delete.html'

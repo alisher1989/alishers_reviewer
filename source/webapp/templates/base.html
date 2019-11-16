@@ -17,7 +17,7 @@ integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4
     <nav class="navbar">
         <div class="container">
             <ul class="menu">
-                <li><a href="{% url 'webapp:list' %}">Home</a></li>
+                <li><a href="{% url 'webapp:products_view' %}">Home</a></li>
                     <li><a href="{% url 'accounts:users_list' %}">Users</a></li>
                 <li class="menu-right">
                     {% if request.user.is_authenticated %}

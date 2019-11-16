@@ -33,9 +33,9 @@ RAITING_CHOICES = (
     ('5', '5'),
 )
 
-class Order(models.Model):
+class Review(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
-                             verbose_name='Пользователь', related_name='orders')
+                             verbose_name='Author', related_name='orders')
     product = models.ForeignKey(Product, related_name='product_order', max_length=100, on_delete=models.CASCADE)
     order_description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='описание отзыва')
     rating = models.CharField(max_length=50, choices=RAITING_CHOICES, default=None,
