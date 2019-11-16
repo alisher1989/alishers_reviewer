@@ -33,7 +33,7 @@ def login_view(request):
             next_url = request.GET.get('next', '')
             if next_url:
                 return redirect(next_url)
-            return redirect('webapp:index')
+            return redirect('webapp:products_view')
         else:
             context['has_error'] = True
     return render(request, 'registration/login.html', context=context)
@@ -42,7 +42,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect('webapp:index')
+    return redirect('webapp:products_view')
 
 
 def register_view(request):
@@ -74,7 +74,7 @@ def register_view(request):
             except ConnectionRefusedError:
                 print('Could not send email. Server error.')
 
-            return redirect('webapp:index')
+            return redirect('webapp:products_view')
         else:
             return render(request, 'register.html', context={'form': form})
 
@@ -85,7 +85,7 @@ def user_activate_view(request, token):
     user.is_active = True
     user.save()
     login(request, user)
-    return redirect('webapp:index')
+    return redirect('webapp:products_view')
 
 
 class UserDetailView(DetailView):

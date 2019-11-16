@@ -12,15 +12,6 @@ class Token(models.Model):
         return str(self.token)
 
 
-class Team(models.Model):
-    user_key = models.ForeignKey('auth.User', related_name='team', on_delete=models.PROTECT)
-    project_key = models.ForeignKey('webapp.Product', related_name='team', on_delete=models.PROTECT)
-    started_at = models.DateField(null=True, blank=True, verbose_name='Started at')
-    ended_at = models.DateField(null=True, blank=True, verbose_name='Ended at')
-
-    def __str__(self):
-        return str(self.user_key)
-
 
 class Profile(models.Model):
     avatar = models.ImageField(null=True, blank=True, upload_to='user_pics', verbose_name='Аватар')

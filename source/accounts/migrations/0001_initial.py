@@ -25,16 +25,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Team',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('started_at', models.DateField(blank=True, null=True, verbose_name='Started at')),
-                ('ended_at', models.DateField(blank=True, null=True, verbose_name='Ended at')),
-                ('project_key', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='team', to='webapp.Project')),
-                ('user_key', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='team', to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.CreateModel(
             name='Profile',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),

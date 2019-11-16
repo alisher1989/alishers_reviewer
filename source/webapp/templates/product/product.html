@@ -12,25 +12,14 @@
 {% endblock %}
 
 {% block content %}
+
+        {% if product.photo %}
+        <img class="avatar" src="{{ product.photo.url }}"
+             width="200" height="200" alt="user picture">
+    {% endif %}
     <h1>{{ product.name }}</h1>
-    <div class="pre"><p><b>Description: </b>{{ product.description }}</p></div>
+    <p><b>Description: </b>{{ product.description }}</p>
     <p><b>Status: </b>{{ product.category }}</p>
-    <p><b>Photo: </b>{{ product.photo }}</p>
-{#    {% for user_in_team in project_team %}#}
-{#        <li class="clearfix border-bottom">#}
-{#            {{ user_in_team }}#}
-{#            <span class="float-right">#}
-{#                <form action="{% url 'webapp:user_delete_from_project'  user_in_team.pk %}" method="POST">#}
-{#                    {% csrf_token %}#}
-{#                    <button class="btn btn-danger" type="submit">Delete</button>#}
-{#                </form>#}
-{#            </span>#}
-{#        </li>#}
-{#    {% endfor %}#}
-{#    <hr>#}
-{#    {% if perms.webapp.change_team %}#}
-{#    <li><a href="{% url 'webapp:project_users_update' project.pk %}"><b>Change team members</b></a></li>#}
-{#    {% endif %}#}
 
     <a href="{% url 'webapp:review_add' product.pk %}"><i class="fas fa-plus-square"></i></a>
 
@@ -41,17 +30,15 @@
             <div class="task">
                 <p>Author: <b>{{ review.author }}</b></p>
                 <p>Description: <b>{{ review.order_description }}</b></p>
+                <p>Email: <b>{{ review.author.email }}</b></p>
                 <div class="pre">Rating: {{ review.rating }}</div>
-                <a href="{% url 'webapp:review_update' review.pk %}"><i class="fas fa-edit"></i></a>
-                <a href="{% url 'webapp:review_delete' review.pk %}"><i class="fas fa-trash"></i></a>
+                {% if perms.webapp.change_review %}
+                    <a href="{% url 'webapp:review_update' review.pk %}"><i class="fas fa-edit"></i></a>
+                {% endif %}
+                {% if perms.webapp.delete_review %}
+                    <a href="{% url 'webapp:review_delete' review.pk %}"><i class="fas fa-trash"></i></a>
+                {% endif %}
             </div>
     {% endfor %}
-{#            <hr>#}
-{#        {% empty %}#}
-{#            <p>No tasks yet.</p>#}
-{#        {% endfor %}#}
-{#    </div>#}
-{#    {% if is_paginated %}#}
-{#        {% include 'partial/pagination.html' %}#}
-{#    {% endif %}#}
+
 {% endblock %}

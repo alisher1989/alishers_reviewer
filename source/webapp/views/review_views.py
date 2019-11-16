@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -12,7 +13,7 @@ class ReviewsView(ListView):
     model = Review
 
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     template_name = 'review/create.html'
     form_class = ReviewForm
@@ -30,14 +31,16 @@ class ReviewCreateView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('webapp:product_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:product_view', kwargs={'pk': self.object.product.pk})
 
 
-class ReviewUpdateView(UpdateView):
+class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
     model = Review
     template_name = 'review/update.html'
     form_class = ReviewForm
     context_object_name = 'review'
+    permission_required = 'webapp.change_review'
+    permission_denied_message = '403 Доступ запрещен'
 
     def form_valid(self, form):
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
@@ -51,9 +54,12 @@ class ReviewUpdateView(UpdateView):
         return reverse('webapp:product_view', kwargs={'pk': self.object.product.pk})
 
 
-class ReviewDeleteView(DeleteView):
+class ReviewDeleteView(PermissionRequiredMixin, DeleteView):
     model = Review
     pk_kwargs_url = 'pk'
     template_name = 'review/delete.html'
     context_object_name = 'review'
     success_url = reverse_lazy('webapp:products_view_view')
+    permission_required = 'webapp.delete_review'
+    permission_denied_message = '403 Доступ запрещен'
+

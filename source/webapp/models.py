@@ -15,7 +15,8 @@ class Product(models.Model):
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default=CATEGORY_CHOICES[0][0],
                                 verbose_name='Категория', null=False, blank=False)
     description = models.TextField(max_length=3000, null=True, blank=True, verbose_name='описание')
-    photo = models.ImageField(upload_to='product_images', null=True, blank=True, verbose_name='Фото')
+    photo = models.ImageField(upload_to='user_pics', null=True, blank=True, verbose_name='Фото')
+
 
     def __str__(self):
         return self.name
@@ -45,8 +46,8 @@ class Review(models.Model):
         return str(self.author)
 
     class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
 
 
 
