@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block menu %}
+{#    {% if perms.webapp.change_project %}#}
+        <li><a href="{% url 'webapp:product_update' product.pk %}">Edit</a></li>
+{#    {% elif perms.webapp.delete_project %}#}
+        <li><a href="{% url 'webapp:product_delete' product.pk %}">Delete</a></li>
+{#    {% elif perms.webapp.add_project%}#}
+        <li><a href="{% url 'webapp:product_add' %}">Create</a></li>
+{#    {% endif %}#}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <div class="pre"><p><b>Description: </b>{{ project.description }}</p></div>
+    <p><b>Status: </b>{{ product.category }}</p>
+    <p><b>Photo: </b>{{ product.photo }}</p>
+    <p>Projects users: </p>
+{#    {% for user_in_team in project_team %}#}
+{#        <li class="clearfix border-bottom">#}
+{#            {{ user_in_team }}#}
+{#            <span class="float-right">#}
+{#                <form action="{% url 'webapp:user_delete_from_project'  user_in_team.pk %}" method="POST">#}
+{#                    {% csrf_token %}#}
+{#                    <button class="btn btn-danger" type="submit">Delete</button>#}
+{#                </form>#}
+{#            </span>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#    <hr>#}
+{#    {% if perms.webapp.change_team %}#}
+{#    <li><a href="{% url 'webapp:project_users_update' project.pk %}"><b>Change team members</b></a></li>#}
+{#    {% endif %}#}
+{#    <hr/>#}
+{#    <h3>Projects tasks</h3>#}
+{#    <a href="{% url 'webapp:task_add' project.pk %}"><i class="fas fa-plus-square"></i></a>#}
+{#    {% if is_paginated %}#}
+{#        {% include 'partial/pagination.html' %}#}
+{#    {% endif %}#}
+{#    <div class="task-list">#}
+{#        {% for task in project.projects_task.all %}#}
+{#            <hr>#}
+{#            <div class="task">#}
+{#                <p>{{ task.summary }} created at {{ task.created_at|date:'d.m.Y H:i:s' }}, created_by <b>{{ task.created_by }}</b></p>#}
+{#                <div class="pre">{{ task.description }}</div>#}
+{#                <a href="{% url 'webapp:task_update' task.pk %}"><i class="fas fa-edit"></i></a>#}
+{#                <a href="{% url 'webapp:task_delete' task.pk %}"><i class="fas fa-trash"></i></a>#}
+{#            </div>#}
+{#            <hr>#}
+{#        {% empty %}#}
+{#            <p>No tasks yet.</p>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#    {% if is_paginated %}#}
+{#        {% include 'partial/pagination.html' %}#}
+{#    {% endif %}#}
+{% endblock %}
