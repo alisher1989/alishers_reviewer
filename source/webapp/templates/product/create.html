@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Create product{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'webapp:products_view' %}">Products</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Create product</h1>
+    <form method="POST" action="{% url 'webapp:product_add' %}">
+        {% include 'partial/form.html' with button_text="Create" %}
+    </form>
+{% endblock %}
