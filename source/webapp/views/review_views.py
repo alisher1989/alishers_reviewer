@@ -59,7 +59,8 @@ class ReviewDeleteView(PermissionRequiredMixin, DeleteView):
     pk_kwargs_url = 'pk'
     template_name = 'review/delete.html'
     context_object_name = 'review'
-    success_url = reverse_lazy('webapp:products_view_view')
+    success_url = reverse_lazy('webapp:products_view')
     permission_required = 'webapp.delete_review'
     permission_denied_message = '403 Доступ запрещен'
+
 

@@ -22,4 +22,22 @@
     <p>Email: <b>{{ user_obj.email }}</b></p>
     <p>About user: <b>{{ user_obj.profile.about_user }}</b></p>
     <p>Link to Git profile: <b><a href="">{{ user_obj.profile.git_profile }}</a></b></p>
+
+        <h2>Reviews</h2>
+    <div class="task-list">
+        {% for review in user_obj.reviews.all %}
+            <hr>
+            <div class="task">
+                <p>Description: <b>{{ review.order_description }}</b></p>
+                <div class="pre">Rating: {{ review.rating }}</div>
+                {% if perms.webapp.change_review %}
+                    <a href="{% url 'webapp:review_update' review.pk %}"><i class="fas fa-edit"></i></a>
+                {% endif %}
+                {% if perms.webapp.delete_review %}
+                    <a href="{% url 'webapp:review_delete' review.pk %}"><i class="fas fa-trash"></i></a>
+                {% endif %}
+            </div>
+    {% endfor %}
+
+
 {% endblock %}

@@ -2,13 +2,15 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block menu %}
-{#    {% if perms.webapp.change_project %}#}
+    {% if perms.webapp.change_product %}
         <li><a href="{% url 'webapp:product_update' product.pk %}">Edit</a></li>
-{#    {% elif perms.webapp.delete_project %}#}
+    {% endif %}
+    {% if perms.webapp.delete_product %}
         <li><a href="{% url 'webapp:product_delete' product.pk %}">Delete</a></li>
-{#    {% elif perms.webapp.add_project%}#}
+    {% endif %}
+    {% if perms.webapp.add_product%}
         <li><a href="{% url 'webapp:product_add' %}">Create</a></li>
-{#    {% endif %}#}
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -28,7 +30,9 @@
         {% for review in product.product_order.all  %}
             <hr>
             <div class="task">
-                <p>Author: <b>{{ review.author }}</b></p>
+                <p>Author: <a href="{% url 'accounts:user_detail' review.author.pk %}"><b class="card-text card-link">
+                    {{ review.author }}
+                </b></a></p>
                 <p>Description: <b>{{ review.order_description }}</b></p>
                 <p>Email: <b>{{ review.author.email }}</b></p>
                 <div class="pre">Rating: {{ review.rating }}</div>
